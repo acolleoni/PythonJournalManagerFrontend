@@ -4,7 +4,7 @@ import { IssuesHomeComponent } from './issues-home/issues-home.component';
 
 const routes: Routes = [
   {
-    path:'issues', component: IssuesHomeComponent
+    path:'', component: IssuesHomeComponent
   }
 ];
 
