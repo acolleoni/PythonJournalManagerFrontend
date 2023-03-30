@@ -6,3 +6,7 @@
   width: 100%;
   background-color: #e9ecef;
 }
+
+img:hover{
+  cursor: pointer;
+}
