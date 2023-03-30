@@ -13,4 +13,5 @@ export class IssuesService {
     getall(): Observable<IssuesDTO[]>{
       return this.http.get<IssuesDTO[]>("http://127.0.0.1:8000/" + "issues/");
   }
+
 }
