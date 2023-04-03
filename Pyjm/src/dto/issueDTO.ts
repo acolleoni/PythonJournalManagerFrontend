@@ -1,4 +1,4 @@
-export class IssuesDTO {
+export class IssueDTO {
 
   id: number;
   title: string;

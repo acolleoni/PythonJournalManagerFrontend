@@ -1,9 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-html{
+:root {
+  --primary: #e9ecef;
+  --light: #fefefe;
+  --dark: #212529;
+  --header: #e9ecef;
+  --footer: #ced4da;
+}
+
+html {
   position: relative;
   min-height: 100vh;
 }
 
-body{
+body {
   height: 100%;
 }

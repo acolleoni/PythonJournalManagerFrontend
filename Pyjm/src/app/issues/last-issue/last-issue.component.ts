@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IssuesDTO } from 'src/app/dto/issuesDTO';
+import { ArticleDTO } from 'src/dto/articleDTO';
+import { CategoryDTO } from 'src/dto/categoryDTO';
+import { IssueDTO } from 'src/dto/issueDTO';
+import { ArticlesService } from 'src/services/articles.service';
 import { IssuesService } from 'src/services/issues.service';
 
 @Component({
@@ -9,21 +12,43 @@ import { IssuesService } from 'src/services/issues.service';
 })
 export class LastIssueComponent {
 
-  constructor(private issuesService: IssuesService) {
+  constructor(private issuesService: IssuesService, private articleService: ArticlesService) {
   }
 
-  numeri: IssuesDTO[];
-  lastIssue: IssuesDTO;
+  numeri: IssueDTO[];
+  lastIssue: IssueDTO;
+  articles: ArticleDTO[];
+  categories: Set<number> = new Set();
 
   ngOnInit(): void {
 
-    this.getLastIssue();
+    this.getLastIssueArticle();
 
   }
 
-  getLastIssue() {
-    this.issuesService.getall().subscribe(numeri => this.numeri = numeri, (e) => console.log(e), () => this.lastIssue = this.numeri[this.numeri.length - 1]);
+  getLastIssueArticle() {
+    this.issuesService.getall().subscribe(
+      numeri => {
+        this.numeri = numeri
+        this.lastIssue = numeri[numeri.length - 1]
+      },
+      (e) => console.log(e),
+      () => this.getArticleByIssue(this.lastIssue.id)
+    );
   }
 
+  getArticleByIssue(id: number) {
+    this.articleService.getArticleByIssue(id).subscribe(article => this.articles = article, (e) => console.log(e), () =>{this.getCategories();
+    });
+  }
+
+  getCategories() {
+    this.articles.forEach((article) => {
+      article.category.forEach((category) =>{
+        this.categories.add(category);
+
+      })
+    })
+  }
 
 }

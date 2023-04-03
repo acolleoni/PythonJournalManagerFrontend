@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IssuesDTO } from 'src/app/dto/issuesDTO';
+import { IssueDTO } from 'src/dto/issueDTO';
 import { IssuesService } from 'src/services/issues.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class ArchiveComponent implements OnInit{
   constructor(private issuesService: IssuesService) {
   }
 
-  numeri: IssuesDTO[];
+  numeri: IssueDTO[];
 
   ngOnInit(): void {
     this.issuesService.getall().subscribe(numeri => this.numeri = numeri, (e) => console.log(e), () => console.log(this.numeri));

@@ -1,7 +1,6 @@
 <section class="jumbotron text-center">
   <div class="container-fluid g-0 position-relative d-flex align-items-center justify-content-center">
     <div class="hero_image"></div>
-    <!--  <img class="JumboImg" src="../assets/colosseo.jpg"/> -->
     <div class="position-absolute">
       <h1 class="text-light">Issue {{lastIssue.id}}</h1>
       <h1 class="text-light">{{lastIssue.title}}</h1>
@@ -15,6 +14,35 @@
       <p class="p-5 m-0">
         {{lastIssue.description}}
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="position-relative">
+  <div class="d-flex flex-column align-items-center">
+    <div class="articles">
+
+      <div *ngFor="let category of categories">
+        <h3 class="text-start">{{category}}</h3>
+
+        <div *ngFor="let article of articles">
+          <div *ngIf="article.category.includes(category)">
+            <a href="">
+              <h4>{{article.title}}</h4>
+            </a>
+
+            <div class="author_container d-flex flex-row">
+              <div *ngFor="let author of article.author">
+
+                <p class="author">{{author}}</p>
+
+              </div>
+            </div>
+            <button>Scarica PDF</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
