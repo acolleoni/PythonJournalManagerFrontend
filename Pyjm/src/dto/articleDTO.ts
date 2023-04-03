@@ -10,6 +10,6 @@ export class ArticleDTO {
   pdf: string;
   issue: number;
   author: number[];
-  category: number[];
+  category: number;
 
 }

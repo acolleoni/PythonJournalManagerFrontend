@@ -23,10 +23,10 @@
     <div class="articles">
 
       <div *ngFor="let category of categories">
-        <h3 class="text-start">{{category}}</h3>
+        <h3 class="text-start">{{category.name}}</h3>
 
         <div *ngFor="let article of articles">
-          <div *ngIf="article.category.includes(category)">
+          <div *ngIf="article.category == category.id">
             <a href="">
               <h4>{{article.title}}</h4>
             </a>
