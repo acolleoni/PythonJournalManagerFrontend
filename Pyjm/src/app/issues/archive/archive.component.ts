@@ -7,19 +7,21 @@ import { IssuesService } from 'src/services/issues.service';
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })
-export class ArchiveComponent implements OnInit{
+export class ArchiveComponent implements OnInit {
 
 
   constructor(private issuesService: IssuesService) {
   }
 
-  numeri: IssueDTO[];
+  lastIssue: IssueDTO;
 
   ngOnInit(): void {
-    this.issuesService.getall().subscribe(numeri => this.numeri = numeri, (e) => console.log(e), () => console.log(this.numeri));
 
   }
 
-
-
+  getLastIssue() {
+    this.issuesService.getLastIssue().subscribe(lastIssue => this.lastIssue = lastIssue,
+      (e) => console.log(e),
+      () => console.log(this.lastIssue));
+  }
 }

@@ -10,8 +10,8 @@ export class IssuesService {
 
   constructor(protected http: HttpClient) { }
 
-    getall(): Observable<IssueDTO[]>{
-      return this.http.get<IssueDTO[]>("http://127.0.0.1:8000/" + "issues/");
+    getLastIssue(): Observable<IssueDTO>{
+      return this.http.get<IssueDTO>("http://127.0.0.1:8000/issues/last");
   }
 
 }

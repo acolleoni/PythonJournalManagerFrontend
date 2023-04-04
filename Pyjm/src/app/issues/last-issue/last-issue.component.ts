@@ -13,10 +13,14 @@ import { IssuesService } from 'src/services/issues.service';
 })
 export class LastIssueComponent {
 
-  constructor(private issuesService: IssuesService, private articleService: ArticlesService, private categoriesService: CategoriesService) {
+  constructor(
+    private issuesService: IssuesService,
+    private articleService: ArticlesService,
+    private categoriesService: CategoriesService
+  ) {
   }
 
-  numeri: IssueDTO[];
+
   lastIssue: IssueDTO;
   articles: ArticleDTO[];
   categorieSet: Set<number> = new Set();
@@ -29,10 +33,9 @@ export class LastIssueComponent {
   }
 
   getLastIssueArticle() {
-    this.issuesService.getall().subscribe(
-      numeri => {
-        this.numeri = numeri
-        this.lastIssue = numeri[numeri.length - 1]
+    this.issuesService.getLastIssue().subscribe(
+      lastIssue => {
+        this.lastIssue = lastIssue
       },
       (e) => console.log(e),
       () => this.getArticleByIssue(this.lastIssue.id)
@@ -40,9 +43,11 @@ export class LastIssueComponent {
   }
 
   getArticleByIssue(id: number) {
-    this.articleService.getArticleByIssue(id).subscribe(article => this.articles = article, (e) => console.log(e), () => {
-      this.getCategories();
-    });
+    this.articleService.getArticleByIssue(id).subscribe(article => this.articles = article,
+      (e) => console.log(e),
+      () => {
+        this.getCategories();
+      });
   }
 
   getCategories() {
@@ -50,9 +55,11 @@ export class LastIssueComponent {
       this.categorieSet.add(article.category)
     })
 
-    this.categoriesService.getAllCategories().subscribe(category => this.categories = category, (e) => console.log(e), () => {
-      this.categories = this.categories.filter((category) => this.categorieSet.has(category.id))
-    });
+    this.categoriesService.getAllCategories().subscribe(category => this.categories = category,
+      (e) => console.log(e),
+      () => {
+        this.categories = this.categories.filter((category) => this.categorieSet.has(category.id))
+      });
 
   }
 
