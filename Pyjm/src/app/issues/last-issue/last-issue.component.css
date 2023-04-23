@@ -27,13 +27,3 @@
   transform: translateY(-85px);
 }
 
-.articles{
-  width:85%;
-  height: 100%;
-  background: var(--light);
-  margin-bottom: 50px;
-}
-
-.author{
-  font-variant: small-caps;
-}

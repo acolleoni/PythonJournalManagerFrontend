@@ -7,6 +7,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LastIssueComponent } from './last-issue/last-issue.component';
+import { ArticlesComponent } from '../shared/issues-component/articles/articles.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { LastIssueComponent } from './last-issue/last-issue.component';
     HeaderComponent,
     FooterComponent,
     LastIssueComponent,
+    ArticlesComponent
   ],
   imports: [
     CommonModule,
