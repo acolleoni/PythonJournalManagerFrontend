@@ -21,7 +21,7 @@ export class LastIssueComponent {
 
   getLastIssueArticle() {
     this.issuesService.getLastIssue().subscribe(
-      (lastIssue) => {this.lastIssue = lastIssue,   console.log(this.lastIssue);},
+      (lastIssue) => this.lastIssue = lastIssue,
       (e) => console.log(e)
 
     );
