@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { IssuesModule } from './issues/issues.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,

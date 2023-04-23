@@ -15,15 +15,15 @@ export class LastIssueComponent {
 
   lastIssue: IssueDTO;
 
-
   ngOnInit(): void {
     this.getLastIssueArticle();
   }
 
   getLastIssueArticle() {
     this.issuesService.getLastIssue().subscribe(
-      (lastIssue) => this.lastIssue = lastIssue,
+      (lastIssue) => {this.lastIssue = lastIssue,   console.log(this.lastIssue);},
       (e) => console.log(e)
+
     );
   }
 

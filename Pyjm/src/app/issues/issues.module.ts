@@ -7,6 +7,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { LastIssueComponent } from './last-issue/last-issue.component';
+import { IssuesHeroComponent } from '../shared/issues-component/issuesHero/issuesHero.component';
 import { ArticlesComponent } from '../shared/issues-component/articles/articles.component';
 
 
@@ -17,7 +18,8 @@ import { ArticlesComponent } from '../shared/issues-component/articles/articles.
     HeaderComponent,
     FooterComponent,
     LastIssueComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    IssuesHeroComponent
   ],
   imports: [
     CommonModule,

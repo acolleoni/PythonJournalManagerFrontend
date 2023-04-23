@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ArticleDTO } from 'src/dto/articleDTO';
 import { CategoryDTO } from 'src/dto/categoryDTO';
 import { IssueDTO } from 'src/dto/issueDTO';
@@ -10,7 +10,7 @@ import { CategoriesService } from 'src/services/categories.service';
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.css']
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, AfterViewInit {
 
   @Input() issue: IssueDTO;
   constructor(
@@ -23,7 +23,10 @@ export class ArticlesComponent implements OnInit {
   categories: CategoryDTO[];
 
   ngOnInit(): void {
-    this.getArticleByIssue(this.issue.id)
+  }
+
+  ngAfterViewInit(): void {
+    this.getArticleByIssue(this.issue.id);
   }
 
   getArticleByIssue(id: number) {

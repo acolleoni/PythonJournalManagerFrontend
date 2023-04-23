@@ -1,21 +1,3 @@
-<section class="jumbotron text-center">
-  <div class="container-fluid g-0 position-relative d-flex align-items-center justify-content-center">
-    <div class="hero_image"></div>
-    <div class="position-absolute">
-      <h1 class="text-light">Issue {{lastIssue.id}}</h1>
-      <h1 class="text-light">{{lastIssue.title}}</h1>
-    </div>
-  </div>
-</section>
-
-<section class="position-relative">
-  <div class="description_container d-flex justify-content-center">
-    <div class="description">
-      <p class="p-5 m-0">
-        {{lastIssue.description}}
-      </p>
-    </div>
-  </div>
-</section>
+<app-issues-hero [issue]="lastIssue"></app-issues-hero>
 
 <app-articles [issue]="lastIssue"></app-articles>
