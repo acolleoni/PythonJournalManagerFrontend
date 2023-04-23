@@ -1,8 +1,10 @@
 import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ArticleDTO } from 'src/dto/articleDTO';
+import { AuthorDTO } from 'src/dto/authorDTO';
 import { CategoryDTO } from 'src/dto/categoryDTO';
 import { IssueDTO } from 'src/dto/issueDTO';
 import { ArticlesService } from 'src/services/articles.service';
+import { AuthorsService } from 'src/services/authors.service';
 import { CategoriesService } from 'src/services/categories.service';
 
 @Component({
@@ -15,12 +17,14 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   @Input() issue: IssueDTO;
   constructor(
     private articleService: ArticlesService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private authrosService: AuthorsService,
   ) { }
 
   articles: ArticleDTO[];
   categorieSet: Set<number> = new Set();
   categories: CategoryDTO[];
+  authors: AuthorDTO[];
 
   ngOnInit(): void {
   }
@@ -33,26 +37,28 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.articleService.getArticleByIssue(id).subscribe(
       (article) => this.articles = article,
       (e) => console.log(e),
-      () => this.getCategories()
+      () => {this.getCategories(), this.getAuthors()}
     );
   }
 
   getCategories() {
     this.articles.forEach((article) => {
       this.categorieSet.add(article.category)
-    })
+    });
 
     this.categoriesService.getAllCategories().subscribe(
       (category) => this.categories = category,
       (e) => console.log(e),
       () => {
         this.categories = this.categories.filter(
-          (category) => this.categorieSet.has(category.id)
-        )
-      }
-    );
-
+          (category) => this.categorieSet.has(category.id))
+      });
   }
 
+  getAuthors(){
+    this.authrosService.getAllAuthors().subscribe(
+      (authors) => this.authors = authors
+    )
+  }
 
 }

@@ -12,9 +12,9 @@
             </a>
 
             <div class="author_container d-flex flex-row">
-              <div *ngFor="let author of article.author">
+              <div *ngFor="let author of article.author; let i = index">
 
-                <p class="author">{{author}}</p>
+                <p class="author"><ng-container *ngIf="i != 0">&nbsp;-&nbsp;</ng-container>{{authors[author-1].name}} {{authors[author-1].surname}}</p>
 
               </div>
             </div>
