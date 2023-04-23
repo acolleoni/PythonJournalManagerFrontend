@@ -18,7 +18,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   constructor(
     private articleService: ArticlesService,
     private categoriesService: CategoriesService,
-    private authrosService: AuthorsService,
+    private authorsService: AuthorsService,
   ) { }
 
   articles: ArticleDTO[];
@@ -37,7 +37,8 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     this.articleService.getArticleByIssue(id).subscribe(
       (article) => this.articles = article,
       (e) => console.log(e),
-      () => {this.getCategories(), this.getAuthors()}
+      () => {this.getCategories(),
+             this.getAuthors()}
     );
   }
 
@@ -56,7 +57,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
   }
 
   getAuthors(){
-    this.authrosService.getAllAuthors().subscribe(
+    this.authorsService.getAllAuthors().subscribe(
       (authors) => this.authors = authors
     )
   }

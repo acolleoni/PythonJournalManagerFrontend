@@ -2,23 +2,22 @@
   <div class="d-flex flex-column align-items-center">
     <div class="articles">
 
-      <div *ngFor="let category of categories">
+      <div *ngFor="let category of categories" class="category mb-5">
         <h3 class="text-start">{{category.name}}</h3>
 
-        <div *ngFor="let article of articles">
+        <div *ngFor="let article of articles" class="single_article mb-3">
           <div *ngIf="article.category == category.id">
-            <a href="">
+            <a [routerLink]="'/article/'+article.id">
               <h4>{{article.title}}</h4>
             </a>
-
             <div class="author_container d-flex flex-row">
-              <div *ngFor="let author of article.author; let i = index">
 
+              <ng-container *ngFor="let author of article.author; let i = index">
                 <p class="author"><ng-container *ngIf="i != 0">&nbsp;-&nbsp;</ng-container>{{authors[author-1].name}} {{authors[author-1].surname}}</p>
+              </ng-container>
 
-              </div>
             </div>
-            <button >Scarica PDF</button>
+            <button>Scarica PDF</button>
           </div>
         </div>
 

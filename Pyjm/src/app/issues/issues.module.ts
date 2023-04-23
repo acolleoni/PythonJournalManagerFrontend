@@ -9,6 +9,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { LastIssueComponent } from './last-issue/last-issue.component';
 import { IssuesHeroComponent } from '../shared/issues-component/issuesHero/issuesHero.component';
 import { ArticlesComponent } from '../shared/issues-component/articles/articles.component';
+import { SingleArticleComponent } from './single-article/single-article.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ArticlesComponent } from '../shared/issues-component/articles/articles.
     FooterComponent,
     LastIssueComponent,
     ArticlesComponent,
-    IssuesHeroComponent
+    IssuesHeroComponent,
+    SingleArticleComponent
   ],
   imports: [
     CommonModule,
